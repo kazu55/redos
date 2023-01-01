@@ -1,0 +1,20 @@
+_G.update_downloadfiles = {
+    --URLを書き込み、_G.update_downloadfilesというグローバル変数に代入する
+    --[[example:
+        {"http://url.com/file.lua", "/file.lua"},
+        {"https://url.co.jp/file.lua", "/file.lua"},
+    ]]
+    --コピペ用 {"http://localhost:8887/redos/update/files/startup.lua", "/startup.lua"},
+    {"http://localhost:8887/redos/update/files/startup.lua", "/startup.lua"},
+    {"http://localhost:8887/redos/update/files/ui/login.lua", "/ui/login.lua"},
+    {"http://localhost:8887/redos/update/files/ui/desktop.lua", "/ui/desktop.lua"},
+    {"http://localhost:8887/redos/update/files/ui/updater.lua", "/ui/updater.lua"},
+    {"http://localhost:8887/redos/update/files/ui/create.lua", "/ui/create.lua"},
+    {"http://localhost:8887/redos/update/files/ui/api/basalt/init.lua", "/ui/api/basalt/init.lua"},
+    {"http://localhost:8887/redos/update/files/ui/setting_ui.lua", "/ui/setting_ui.lua"},
+    {"http://localhost:8887/redos/update/files/programs/about.lua", "/programs/about.lua"},
+    {"http://localhost:8887/redos/update/files/ui/api/dialog/dialog.lua", "/ui/api/dialog/dialog.lua"},
+    {"http://localhost:8887/redos/update/files/ui/api/window/init.lua", "/ui/api/window/init.lua"},
+    {"http://localhost:8887/redos/update/files/ui/menu.lua", "/ui/menu.lua"},
+}
+_G.update_msg = "4.23 >> 4.24"

@@ -1,0 +1,25 @@
+local currentdir = shell:dir()
+shell.setDir("/")
+local basalt = require("/ui/api/basalt")
+shell.setDir(currentdir)
+local main = basalt:createFrame()
+
+local runshell = main:addButton()
+runshell:setText("Terminal")
+runshell:setSize(10, 3)
+runshell:setPosition(1, 1)
+runshell:onClick(function() system.desktop.newProgram("/rom/programs/shell.lua", 4, 4, 41, 21)end)
+
+local runupdater = main:addButton()
+runupdater:setText("Updater")
+runupdater:setSize(9, 3)
+runupdater:setPosition(12, 1)
+runupdater:onClick(function() system.desktop.newProgram("/ui/updater.lua", 4, 4, 41, 21)end)
+
+local runcreate_ccount = main:addButton()
+runcreate_ccount:setText("NewAccount")
+runcreate_ccount:setSize(12, 3)
+runcreate_ccount:setPosition(22, 1)
+runcreate_ccount:onClick(function() system.desktop.newProgram("/ui/create.lua", 4, 4, 41, 21)end)
+
+basalt.autoUpdate()
