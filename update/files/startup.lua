@@ -1,4 +1,4 @@
-_G.runningversion = 4.281
+_G.runningversion = 4.282
 _G.versiontype = "release"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
@@ -263,7 +263,7 @@ local function main()
         end
     end
     local function connect()
-        ok = http.get("http://127.0.0.1:8887")
+        ok = http.get("https://raw.githubusercontent.com/kazu55/redos")
         if not ok then
             logwrite("internet not connected")
             loading_text("Internet not connected")
@@ -272,11 +272,11 @@ local function main()
             logwrite("internet connected")
             loading_text("Internet connected.")
             loading_text("Checking update")
-            shell.run("wget run http://127.0.0.1:8887/redos/update/version.txt")
+            shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/version.txt")
             if runningversion < newver then
                 logwrite("Getting update-files list")
                 loading_text("Getting update-files list")
-                shell.run("wget run http://127.0.0.1:8887/redos/update/download-files.txt")
+                shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/download-files.txt")
             end
             _G.notprint = false
         end
