@@ -1,5 +1,7 @@
 _G.window_api = require("/ui/api/window")
 _G.runprograms = {}
+_G.dumpdata = {}
+
 run = shell.run
 newWindow = window_api.new
 local w, h = term.getSize()
@@ -120,6 +122,7 @@ term.setCursorPos(1, 1)
 
 
 function _G.runProgram(Apps, x, y, w, h, name)
+  table.insert(dumpdata, 1, Apps)
   logwrite("running " .. Apps)
   if not name then
     name = "Untitled"
@@ -147,6 +150,17 @@ function time()
     end
 end
 
+
+if fs.exists("/dump.d") then
+  logwrite("loading")
+  local file = fs.open("/dump.d", "r")
+  while true do
+    local line = file.readLine()
+    if not line then file.close() break end
+    runProgram(line, math.random(1, screen_w), math.random(1, screen_h), 26, 20, line)
+  end
+  fs.delete("/dump.d")
+end
 
 function start()
     while true do
@@ -193,7 +207,7 @@ function start()
         elseif input == "Power       " then
           term.setBackgroundColor(colors.gray)
           term.setTextColor(colors.lightGray)
-          local inputb = popupMenu(xa, xy+1, "Reboot      ", "Shutdown    ", "Sign out    ")
+          local inputb = popupMenu(xa, xy+1, "Reboot      ", "Shutdown    ", "Sign out    ", "Hibernate   ")
           if inputb == "Reboot      " then
             shutdown_script()
             logwrite("stopping " .. os.version())
@@ -205,6 +219,14 @@ function start()
           elseif inputb == "Sign out    " then
             _G.loggeduser = nil
             break
+          elseif inputb == "Hibernate   " then
+            local file = fs.open("dump.d", "a")
+            for i = 1, #dumpdata do
+              file.write(dumpdata[i] .. "\n")
+            end
+            file.close()
+            shutdown_script()
+            os.shutdown()
           end
           term.setTextColor(colors.white)
         end
