@@ -1,4 +1,4 @@
-_G.runningversion = 4.25
+_G.runningversion = 4.26
 _G.versiontype = "release"
 if fs.exists("/register.SIM") then
     shell.run("/register.SIM")

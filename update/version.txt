@@ -1,1 +1,1 @@
-_G.newver = 4.25
+_G.newver = 4.26
