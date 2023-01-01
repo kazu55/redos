@@ -1,10 +1,5 @@
-_G.runningversion = 4.26
+_G.runningversion = 4.27
 _G.versiontype = "release"
-if fs.exists("/register.SIM") then
-    shell.run("/register.SIM")
-else
-    _G.register_celler = nil
-end
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
@@ -31,7 +26,7 @@ _G.screen_w, _G.screen_h = term.getSize()
 
 logwrite("starting " .. os.version())
 
-logwrite("register function [0/15]")
+logwrite("register function [0/11]")
 
 term.clear()
 term.setCursorPos(1, 1)
@@ -43,7 +38,7 @@ if screen_w < 60 or screen_h < 25 then
 end
 
 
-logwrite("register function [1/15]")
+logwrite("register function [1/11]")
 
 function _G.loading_text(text)
     term.setCursorPos(_G.screen_w / 2 - string.len(text) / 2 + 1, _G.screen_h / 1.5)
@@ -57,7 +52,7 @@ end
 
 
 
-logwrite("register function [2/15]")
+logwrite("register function [2/11]")
 
 function _G.textutils.animate_1()
     local frames = {
@@ -111,7 +106,7 @@ function update()
     end
 end
 
-logwrite("register function [3/15]")
+logwrite("register function [3/11]")
 
 function _G.centerText(text)
     term.setCursorPos(_G.screen_w / 2 - string.len(text) / 2 + 1, _G.screen_h / 2)
@@ -120,19 +115,19 @@ function _G.centerText(text)
     term.clearLine()
     term.write(text)
 end
-logwrite("register function [4/15]")
+logwrite("register function [4/11]")
 function _G.loading_text2(text)
     term.setCursorPos(_G.screen_w / 2 - string.len(text) / 2 + 1, _G.screen_h / 1.5)
     term.clearLine()
     term.write(text)
 end
-logwrite("register function [5/15]")
+logwrite("register function [5/11]")
 function _G.centerText2(text, y, textcol)
     term.setCursorPos(_G.screen_w / 2 - string.len(text) / 2 + 1, y)
     term.setTextColor(textcol)
     term.write(text)
 end
-logwrite("register function [6/15]")
+logwrite("register function [6/11]")
 function _G.text(message, type)
     if type == 1 then
       term.setTextColor(colors.blue)
@@ -147,7 +142,7 @@ function _G.text(message, type)
     end
 end
 
-logwrite("register function [7/15]")
+logwrite("register function [7/11]")
 
 function _G.error(msg, level)
     local level = level or 2
@@ -177,7 +172,7 @@ function _G.error(msg, level)
     backerror(msg, level)
 end
 
-logwrite("register function [8/15]")
+logwrite("register function [8/11]")
 local shutdownx = os.shutdown
 local rebootx = os.reboot
 
@@ -194,7 +189,7 @@ function os.shutdown()
     end
 end
 
-logwrite("register function [9/15]")
+logwrite("register function [9/11]")
 
 function os.accept(extension)
     local file = fs.open("/accepted." .. extension, "a")
@@ -216,56 +211,7 @@ function os.reboot()
         end
     end
 end
-logwrite("register function [10/15]")
-    
-
-
-logwrite("register function [11/15]")
-
-
-rednet.celler = {}
-
-function rednet.celler.sendHTTP(msg)
-    if register_celler then
-        rednet.open("back")
-        rednet.send(register_celler, msg, "http")
-        id, msg = rednet.receive(nil, 10)
-        if not msg or msg == "not found" then
-            return false
-        else
-            return msg
-        end
-    else
-        return false, "No celler"
-    end
-end
-
-logwrite("register function [12/15]")
-
-function rednet.celler.sendCHAT(to, msg)
-    if register_celler then
-        rednet.open("back")
-        rednet.send(register_celler, {to, msg}, "chat")
-        local id, msg = rednet.receive(nil, 10)
-        if not msg then
-            return false
-        else
-            return true
-        end
-    else
-        return false, "No celler"
-    end
-end
-
-logwrite("register function [13/15]")
-
-function rednet.celler.receive()
-    local id, msg = rednet.receive("chat")
-    return id, msg
-end
-
-
-logwrite("register function [14/15]")
+logwrite("register function [10/11]")
 
 printx = _G.print
 writex = write
@@ -278,7 +224,7 @@ function _G.print(...)
     end
 end
 
-logwrite("register function [15/15]")
+logwrite("register function [11/11]")
 
 
 
