@@ -17,4 +17,4 @@ _G.update_downloadfiles = {
     {"http://localhost:8887/redos/update/files/ui/api/window/init.lua", "/ui/api/window/init.lua"},
     {"http://localhost:8887/redos/update/files/ui/menu.lua", "/ui/menu.lua"},
 }
-_G.update_msg = "4.23 >> 4.24"
+_G.update_msg = "4.24 >> 4.25"
