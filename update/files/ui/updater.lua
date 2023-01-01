@@ -1,8 +1,8 @@
-shell.run("wget run http://localhost:8887/redos/update/version.txt")
+shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/version.txt")
 if runningversion < newver then
     print("Getting update files list")
     logwrite("Getting update-files list")
-    shell.run("wget run http://localhost:8887/redos/update/download-files.txt")
+    shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/download-files.txt")
 end
 
 if not update_downloadfiles then
