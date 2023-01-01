@@ -1,4 +1,4 @@
-_G.runningversion = 4.281
+_G.runningversion = 4.282
 _G.versiontype = "release"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
