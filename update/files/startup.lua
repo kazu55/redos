@@ -1,4 +1,4 @@
-_G.runningversion = 4.28
+_G.runningversion = 4.281
 _G.versiontype = "release"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
@@ -176,16 +176,25 @@ logwrite("register function [8/11]")
 local shutdownx = os.shutdown
 local rebootx = os.reboot
 
-function os.shutdown()
+function os.reboot()
     local running = shell.getRunningProgram()
-    local file = fs.open("/accepted.shutdown", "r")
-    local freadall = file.readAll()
-    file.close()
-    if string.find(freadall, running) then
-        shutdownx()
+    if fs.exists("/accepted.shutdown") then
+        local file = fs.open("/accepted.shutdown", "r")
+        local freadall = file.readAll()
+        file.close()
+        if string.find(freadall, running) then
+            shutdownx()
+        else
+            local choice = dialog.yesorno(1, 1, "Do you want to\nregister the\npower list?")
+            if choice then
+                os.accept("shutdown")
+            end
+        end
     else
-        logwrite("Not accepted. Canceled os.shutdown task.")
-        return false, "Not accepted"
+        local choice = dialog.yesorno(1, 1, "Do you want to\nregister the\npower list?")
+        if choice then
+            os.accept("shutdown")
+        end
     end
 end
 
@@ -199,11 +208,18 @@ end
 
 function os.reboot()
     local running = shell.getRunningProgram()
-    local file = fs.open("/accepted.shutdown", "r")
-    local freadall = file.readAll()
-    file.close()
-    if string.find(freadall, running) then
-        rebootx()
+    if fs.exists("/accepted.shutdown") then
+        local file = fs.open("/accepted.shutdown", "r")
+        local freadall = file.readAll()
+        file.close()
+        if string.find(freadall, running) then
+            rebootx()
+        else
+            local choice = dialog.yesorno(1, 1, "Do you want to\nregister the\npower list?")
+            if choice then
+                os.accept("shutdown")
+            end
+        end
     else
         local choice = dialog.yesorno(1, 1, "Do you want to\nregister the\npower list?")
         if choice then
@@ -211,6 +227,7 @@ function os.reboot()
         end
     end
 end
+
 logwrite("register function [10/11]")
 
 printx = _G.print
