@@ -1,4 +1,4 @@
-_G.runningversion = 4.27
+_G.runningversion = 4.271
 _G.versiontype = "release"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
@@ -56,9 +56,9 @@ logwrite("register function [2/11]")
 
 function _G.textutils.animate_1()
     local frames = {
-        {i = false, c = "\7      "},
-        {i = false, c = "\7      "},
-        {i = false, c = "\7      "},
+        {i = false, c = " \7      "},
+        {i = false, c = " \7      "},
+        {i = false, c = " \7      "},
         {i = false, c = "\7 \7   "},
         {i = false, c = "\7 \7   "},
         {i = false, c = "\7 \7   "},
