@@ -1,4 +1,4 @@
-_G.runningversion = 4.282
+_G.runningversion = 4.283
 _G.versiontype = "release"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
@@ -251,16 +251,7 @@ logwrite("internet connecting")
 
 local function main()
     local function text()
-        while true do
-            loading_text("Internet connecting...")
-            sleep(3)
-            loading_text("Tip: Uses Wojble's font")
-            sleep(3)
-            loading_text("Connecting")
-            sleep(3)
-            loading_text("Please wait")
-            sleep(3)
-        end
+        loading_text("Internet connecting...")
     end
     local function connect()
         ok = http.get("https://raw.githubusercontent.com/kazu55/redos")
