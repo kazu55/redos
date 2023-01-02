@@ -27,7 +27,6 @@ begin:onClick(function()
     for i = 1, #update_downloadfiles do
         fs.delete(update_downloadfiles[i][2])
         shell.run("wget ".. update_downloadfiles[i][1] .. " " .. update_downloadfiles[i][2])
-        sleep(0.5)
     end
     os.reboot()
 end
