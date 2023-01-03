@@ -28,12 +28,15 @@ begin:onClick(function()
         local data = http.get(update_downloadfiles[i][1], nil, update_downloadfiles[i][3] or false)
         if not update_downloadfiles[i][3] then
             local file = fs.open(update_downloadfiles[i][2], "w")
+            file.write(data.readAll())
+            file.close()
+            data.close()
         else
             local file = fs.open(update_downloadfiles[i][2], "wb")
+            file.write(data.readAll())
+            file.close()
+            data.close()
         end
-        file.write(data.readAll())
-        file.close()
-        data.close()
     end
     os.reboot()
 end
