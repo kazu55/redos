@@ -3,10 +3,17 @@ shell.run("wget run https://basalt.madefor.cc/install.lua packed /basalt.lua")
 shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/version.txt")
 shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/download-files.txt")
 
+shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/version.txt")
+if runningversion < newver then
+    print("Getting update files list")
+    logwrite("Getting update-files list")
+    shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/download-files.txt")
+end
+
 if not update_downloadfiles then
     error("This version is latest", 2)
 else
-local basalt = require("/basalt")
+local basalt = require("/ui/api/basalt")
 
 local w, h = term.getSize()
 
@@ -24,10 +31,16 @@ begin:onClick(function()
     fs.makeDir("/backup")
     for i = 1, #update_downloadfiles do
         fs.delete(update_downloadfiles[i][2])
-        shell.run("wget ".. update_downloadfiles[i][1] .. " " .. update_downloadfiles[i][2])
-        sleep(0.5)
+        local data = http.get(update_downloadfiles[i][1], nil, update_downloadfiles[i][3] or false)
+        if not update_downloadfiles[i][3] then
+            local file = fs.open(update_downloadfiles[i][2], "w")
+        else
+            local file = fs.open(update_downloadfiles[i][2], "wb")
+        end
+        file.write(data.readAll())
+        file.close()
+        data.close()
     end
-    shell.run("rm /basalt.lua")
     os.reboot()
 end
 )
