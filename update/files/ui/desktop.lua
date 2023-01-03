@@ -202,7 +202,7 @@ function start()
           elseif inputa == "about       " then
             runProgram("/programs/about.lua", var2, var3+2, 26, 18, "about")
           elseif inputa == "Updater     " then
-            runProgram("/ui/updater.lua", var2, var3+2, screen_w, screen_h - 1, "about")
+            runProgram("/ui/updater.lua", var2, var3+2, w, h - 1, "about")
           end
         elseif input == "Power       " then
           term.setBackgroundColor(colors.gray)
