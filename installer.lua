@@ -7,7 +7,7 @@ shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/v
 if not update_downloadfiles then
     error("This version is latest", 2)
 else
-local basalt = require("/ui/api/basalt")
+local basalt = require("/basalt")
 
 local w, h = term.getSize()
 
