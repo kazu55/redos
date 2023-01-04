@@ -1,5 +1,6 @@
-_G.runningversion = 231
+_G.runningversion = 20232
 _G.versiontype = "release"
+term.setPaletteColor(colors.black, 0, 0, 0)
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
