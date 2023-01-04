@@ -1,4 +1,4 @@
-_G.runningversion = 4.321
+_G.runningversion = 4.33
 _G.versiontype = "release"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
@@ -12,9 +12,9 @@ backerror = error
 
 _G.bootdate = os.date("%Y_%m_%d_%H_%M_%S")
 
-fs.open("latest.log", "w").close()
-fs.move("/latest.log", "/logs/log-" .. bootdate .. ".log")
 
+fs.move("/latest.log", "/logs/log-" .. bootdate .. ".log")
+fs.open("latest.log", "w").close()
 
 function _G.logwrite(text)
     local file = fs.open("/latest.log", "a")
@@ -245,7 +245,6 @@ logwrite("register function [11/11]")
 
 
 
-
 logwrite("internet connecting")
 
 
@@ -286,22 +285,67 @@ term.clearLine()
 term.setTextColor(colors.white)
 term.setBackgroundColor(colors.black)
 term.clear()
-
-
-
-while true do
-    logwrite("running /ui/login.lua")
-    if not fs.exists("/users") then
-        shell.run("/ui/create.lua")
+if not fs.exists("/boot.type") then
+    local file = fs.open("/boot.type", "w")
+    file.close()
+end
+local file = fs.open("/boot.type", "r")
+local type = file.readAll()
+file.close()
+if type == "" then
+    while true do
+        logwrite("running /ui/login.lua")
+        if not fs.exists("/users") then
+            shell.run("/ui/create.lua")
+        end
+        shell.run("/ui/login.lua")
+        if loggeduser then
+            logwrite("running /ui/desktop.lua")
+            shell.run("/ui/desktop.lua")
+            _G.loggeduser = nil
+            logwrite("I logged out")
+        else
+            logwrite("I didn't log in, but I tried to log in. Please Again.")
+    
+        end
     end
-    shell.run("/ui/login.lua")
-    if loggeduser then
-        logwrite("running /ui/desktop.lua")
-        shell.run("/ui/desktop.lua")
-        _G.loggeduser = nil
-        logwrite("I logged out")
-    else
-        logwrite("I didn't log in, but I tried to log in. Please Again.")
-
+elseif type == "safemode" then
+    local file = fs.open("/boot.type", "w")
+    file.write("")
+    file.close()
+    term.clear()
+    term.setCursorPos(1, 1)
+    logwrite("booting safemode")
+    local function safegui()
+        local basalt = require("/ui/api/basalt")
+        local frame = basalt.createFrame():setBackground(colors.black)
+        local restart = frame:addButton():setForeground(colors.black):setBackground(colors.lightGray)
+        restart:setText("restart")
+        restart:setPosition("parent.w / 2 - 9 / 2 + 1", "parent.h/2-2")
+        restart:setSize(9, 1)
+        restart:onClick(function()
+            logwrite("restarting")
+            os.reboot()
+        end)
+        local terminal = frame:addButton():setForeground(colors.black):setBackground(colors.lightGray)
+        terminal:setText("Terminal")
+        terminal:setPosition("parent.w / 2 - 10 / 2 + 1", "parent.h/2")
+        terminal:setSize(10, 1)
+        terminal:onClick(function()
+            shell.run("clear")
+            logwrite("running shell")
+            shell.run("shell")
+            os.reboot()
+        end)
+        local shutdown = frame:addButton():setForeground(colors.black):setBackground(colors.lightGray)
+        shutdown:setText("Shutdown")
+        shutdown:setPosition("parent.w / 2 - 10 / 2 + 1", "parent.h/2+2")
+        shutdown:setSize(10, 1)
+        shutdown:onClick(function()
+            logwrite("shutting down")
+            os.shutdown()
+        end)
+        basalt.autoUpdate()
     end
+    safegui()
 end
