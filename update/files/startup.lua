@@ -1,11 +1,11 @@
-_G.runningversion = 20232
+_G.runningversion = 20233
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
 function _G.os.version()
-    return "ThunderBolt v" .. tostring(runningversion) .. " : " .. tostring(versiontype)
+    return "HNY-2023 v" .. tostring(runningversion) .. " : " .. tostring(versiontype)
 end
 
 
