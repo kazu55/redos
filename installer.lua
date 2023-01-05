@@ -24,8 +24,9 @@ begin:onClick(function()
     _G.notprint = true
     fs.makeDir("/backup")
     for i = 1, #update_downloadfiles do
-        local progress = frame:addFrame():setPosition("parent.w / 2 - 10 / 2 + 1", "parent.h / 2-2"):setSize(10, 4)
+        local progress = frame:addFrame():setPosition("parent.w / 2 - 10 / 2 + 1", "parent.h / 2-2"):setSize(10, 4):setBackground(colors.gray)
         local bar = progress:addProgressbar()
+        bar:setProgressBar(colors.lightGray)
         fs.delete(update_downloadfiles[i][2])
         local data = http.get(update_downloadfiles[i][1], nil, update_downloadfiles[i][3] or false)
         if not update_downloadfiles[i][3] then
