@@ -255,7 +255,7 @@ local function main()
         loading_text("Internet connecting...")
     end
     local function connect()
-        ok = http.get("https://raw.githubusercontent.com/kazu55/redos")
+        ok = http.get("https://github.com")
         if not ok then
             logwrite("internet not connected")
             loading_text("Internet not connected")
