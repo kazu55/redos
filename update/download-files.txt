@@ -15,4 +15,4 @@ _G.update_downloadfiles = {
     {"https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/dialog/dialog.lua", "/ui/api/dialog/dialog.lua"},
     {"https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/window/init.lua", "/ui/api/window/init.lua"},
 }
-_G.update_msg = "20234"
+_G.update_msg = "20235"
