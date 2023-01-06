@@ -1,4 +1,4 @@
-_G.runningversion = 20235
+_G.runningversion = 20236
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 
@@ -225,7 +225,6 @@ end
 shellrunx = shell.run
 runprogram = shell.getRunningProgram
 function shell.run(...)
-    local running = runprogram()
     if fs.exists("/accepted.program") then
         local file = fs.open("/accepted.program", "r")
         local freadall = file.readAll()
