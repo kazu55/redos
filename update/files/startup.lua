@@ -222,28 +222,6 @@ function _G.print(...)
     end
 end
 
-shellrunx = shell.run
-runprogram = shell.getRunningProgram
-function shell.run(...)
-    if fs.exists("/accepted.program") then
-        local file = fs.open("/accepted.program", "r")
-        local freadall = file.readAll()
-        file.close()
-        if string.find(freadall, running) then
-            shell.run(...)
-        else
-            local choice = dialog.yesorno(1, 1, "do you execute third-party program?")
-            if choice then
-                os.accept("program")
-            end
-        end
-    else
-        local file = fs.open("/accepted.program", "a")
-        file.write("/startup.lua\n/ui/desktop.lua\n/ui/login.lua\n/ui/create.lua\n/ui/updater.lua")
-        file.close()
-    end
-end
-
 logwrite("internet connecting")
 
 
