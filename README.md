@@ -1,4 +1,5 @@
 # redos-script
+[English](https://github.com/kazu55/redos/main/README-en.md)
 
 インストールを実行するには
 ```
