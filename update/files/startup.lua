@@ -1,11 +1,11 @@
-_G.runningversion = 20233
+_G.runningversion = 20238
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
 function _G.os.version()
-    return "HNY-2023 v" .. tostring(runningversion) .. " : " .. tostring(versiontype)
+    return "HNY-2023 v" .. tostring(runningversion)
 end
 
 
@@ -27,7 +27,7 @@ _G.screen_w, _G.screen_h = term.getSize()
 
 logwrite("starting " .. os.version())
 
-logwrite("register function [0/11]")
+logwrite("register function...")
 
 term.clear()
 term.setCursorPos(1, 1)
@@ -38,9 +38,6 @@ if screen_w < 60 or screen_h < 25 then
     while true do sleep(0) end
 end
 
-
-logwrite("register function [1/11]")
-
 function _G.loading_text(text)
     term.setCursorPos(_G.screen_w / 2 - string.len(text) / 2 + 1, _G.screen_h / 1.5)
     term.setBackgroundColor(colors.black)
@@ -48,12 +45,6 @@ function _G.loading_text(text)
     term.clearLine()
     term.write(text)
 end
-
-
-
-
-
-logwrite("register function [2/11]")
 
 function _G.textutils.animate_1()
     local frames = {
@@ -107,8 +98,6 @@ function update()
     end
 end
 
-logwrite("register function [3/11]")
-
 function _G.centerText(text)
     term.setCursorPos(_G.screen_w / 2 - string.len(text) / 2 + 1, _G.screen_h / 2)
     term.setBackgroundColor(colors.black)
@@ -116,19 +105,16 @@ function _G.centerText(text)
     term.clearLine()
     term.write(text)
 end
-logwrite("register function [4/11]")
 function _G.loading_text2(text)
     term.setCursorPos(_G.screen_w / 2 - string.len(text) / 2 + 1, _G.screen_h / 1.5)
     term.clearLine()
     term.write(text)
 end
-logwrite("register function [5/11]")
 function _G.centerText2(text, y, textcol)
     term.setCursorPos(_G.screen_w / 2 - string.len(text) / 2 + 1, y)
     term.setTextColor(textcol)
     term.write(text)
 end
-logwrite("register function [6/11]")
 function _G.text(message, type)
     if type == 1 then
       term.setTextColor(colors.blue)
@@ -143,7 +129,6 @@ function _G.text(message, type)
     end
 end
 
-logwrite("register function [7/11]")
 
 function _G.error(msg, level)
     local level = level or 2
@@ -173,7 +158,6 @@ function _G.error(msg, level)
     backerror(msg, level)
 end
 
-logwrite("register function [8/11]")
 local shutdownx = os.shutdown
 local rebootx = os.reboot
 
@@ -198,8 +182,6 @@ function os.reboot()
         end
     end
 end
-
-logwrite("register function [9/11]")
 
 function os.accept(extension)
     local file = fs.open("/accepted." .. extension, "a")
@@ -229,8 +211,6 @@ function os.reboot()
     end
 end
 
-logwrite("register function [10/11]")
-
 printx = _G.print
 writex = write
 
@@ -242,10 +222,27 @@ function _G.print(...)
     end
 end
 
-logwrite("register function [11/11]")
+shellrunx = shell.run
 
-
-
+function shell.run(...)
+    if fs.exists("/accepted.program") then
+        local file = fs.open("/accepted.program", "r")
+        local freadall = file.readAll()
+        file.close()
+        if string.find(freadall, ...) then
+            shellrunx(...)
+        else
+            local choice = dialog.yesorno(1, 1, "do you execute third-party program?")
+            if choice then
+                os.accept("program")
+            end
+        end
+    else
+        local file = fs.open("/accepted.program", "a")
+        file.write("/startup.lua\n/ui/desktop.lua\n/ui/login.lua\n/ui/create.lua\n/ui/updater.lua")
+        file.close()
+    end
+end
 
 logwrite("internet connecting")
 
