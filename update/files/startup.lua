@@ -1,4 +1,4 @@
-_G.runningversion = 20234
+_G.runningversion = 20238
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 
@@ -225,12 +225,11 @@ end
 shellrunx = shell.run
 
 function shell.run(...)
-    local running = shell.getRunningProgram()
     if fs.exists("/accepted.program") then
         local file = fs.open("/accepted.program", "r")
         local freadall = file.readAll()
         file.close()
-        if string.find(freadall, running) then
+        if string.find(freadall, ...) then
             shellrunx(...)
         else
             local choice = dialog.yesorno(1, 1, "do you execute third-party program?")
