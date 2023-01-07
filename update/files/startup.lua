@@ -1,4 +1,4 @@
-_G.runningversion = 20236
+_G.runningversion = 20234
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 
@@ -219,6 +219,29 @@ function _G.print(...)
         logwrite("Not print enabled.")
     else
         printx(...)
+    end
+end
+
+shellrunx = shell.run
+
+function shell.run(...)
+    local running = shell.getRunningProgram()
+    if fs.exists("/accepted.program") then
+        local file = fs.open("/accepted.program", "r")
+        local freadall = file.readAll()
+        file.close()
+        if string.find(freadall, running) then
+            shellrunx(...)
+        else
+            local choice = dialog.yesorno(1, 1, "do you execute third-party program?")
+            if choice then
+                os.accept("program")
+            end
+        end
+    else
+        local file = fs.open("/accepted.program", "a")
+        file.write("/startup.lua\n/ui/desktop.lua\n/ui/login.lua\n/ui/create.lua\n/ui/updater.lua")
+        file.close()
     end
 end
 

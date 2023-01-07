@@ -1,1 +1,1 @@
-_G.newver = 20236
+_G.newver = 20237
