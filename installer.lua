@@ -38,6 +38,7 @@ begin:onClick(function()
             data.close()
         end
     end
+    fs.delete("/basalt.lua")
     os.reboot()
 end
 )
