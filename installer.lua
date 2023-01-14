@@ -1,9 +1,9 @@
 shell.run("wget run https://basalt.madefor.cc/install.lua packed /basalt.lua")
 
-shell.run("wget run http://localhost/redos/update/version.txt")
-shell.run("wget run http://localhost/redos/update/download-files.txt")
+shell.run("wget run http://localhost:81/redos/update/version.txt")
+shell.run("wget run http://localhost:81/redos/update/download-files.txt")
 
-shell.run("wget run http://localhost/redos/update/version.txt")
+shell.run("wget run http://localhost:81/redos/update/version.txt")
 if not update_downloadfiles then
     error("This version is latest", 2)
 else
