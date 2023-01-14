@@ -1,4 +1,4 @@
-_G.runningversion = 202310
+_G.runningversion = 202311
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 
