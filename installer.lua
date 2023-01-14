@@ -2,8 +2,6 @@ shell.run("wget run https://basalt.madefor.cc/install.lua packed /basalt.lua")
 
 shell.run("wget run http://raw.githubusercontent.com/kazu55/redos/main/update/version.txt")
 shell.run("wget run http://raw.githubusercontent.com/kazu55/redos/main/update/download-files.txt")
-
-shell.run("wget run http://raw.githubusercontent.com/kazu55/redos/main/update/version.txt")
 if not update_downloadfiles then
     error("This version is latest", 2)
 else
