@@ -1,11 +1,11 @@
-_G.runningversion = 20238
+_G.runningversion = 20239
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
 function _G.os.version()
-    return "HNY-2023 v" .. tostring(runningversion)
+    return "ysbos v" .. tostring(runningversion)
 end
 
 
@@ -31,12 +31,6 @@ logwrite("register function...")
 
 term.clear()
 term.setCursorPos(1, 1)
-
-if screen_w < 60 or screen_h < 25 then
-    printError("not supported screen.")
-    print("Screen width must be 60 or greater and Screen width must be 25 to activate.")
-    while true do sleep(0) end
-end
 
 function _G.loading_text(text)
     term.setCursorPos(_G.screen_w / 2 - string.len(text) / 2 + 1, _G.screen_h / 1.5)
@@ -245,6 +239,12 @@ function shell.run(...)
     end
 end
 
+if screen_w < 60 or screen_h < 25 then
+    printError("not supported screen.")
+    print("Screen width must be 60 or greater and Screen width must be 25 to activate.")
+    while true do sleep(0) end
+end
+
 logwrite("internet connecting")
 
 
@@ -253,7 +253,7 @@ local function main()
         loading_text("Internet connecting...")
     end
     local function connect()
-        ok = http.get("https://raw.githubusercontent.com/kazu55/redos")
+        ok = http.get("http://localhost/redos")
         if not ok then
             logwrite("internet not connected")
             loading_text("Internet not connected")
@@ -262,11 +262,11 @@ local function main()
             logwrite("internet connected")
             loading_text("Internet connected.")
             loading_text("Checking update")
-            shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/version.txt")
+            shell.run("wget run http://localhost/redos/update/version.txt")
             if runningversion < newver then
                 logwrite("Getting update-files list")
                 loading_text("Getting update-files list")
-                shell.run("wget run https://raw.githubusercontent.com/kazu55/redos/main/update/download-files.txt")
+                shell.run("wget run http://localhost/redos/update/download-files.txt")
             end
             _G.notprint = false
         end
@@ -285,8 +285,6 @@ term.clearLine()
 term.setTextColor(colors.white)
 term.setBackgroundColor(colors.black)
 term.clear()
-
-
 
 while true do
     logwrite("running /ui/login.lua")
