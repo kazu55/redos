@@ -1,4 +1,4 @@
-_G.runningversion = 20239
+_G.runningversion = 202310
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 
@@ -179,7 +179,7 @@ end
 
 function os.accept(extension)
     local file = fs.open("/accepted." .. extension, "a")
-    file.write(shell.getRunningProgram() .. "\n")
+    file.write("/" .. shell.getRunningProgram() .. "\n")
     file.close()
 end
 
