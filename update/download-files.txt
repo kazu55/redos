@@ -1,12 +1,12 @@
 _G.update_downloadfiles = {
-    {"http://localhost/redos/update/files/startup.lua", "/startup.lua"},
-    {"http://localhost/redos/update/files/ui/desktop.lua", "/ui/desktop.lua"},
-    {"http://localhost/redos/update/files/ui/login.lua", "/ui/login.lua"},
-    {"http://localhost/redos/update/files/ui/updater.lua", "/ui/updater.lua"},
-    {"http://localhost/redos/update/files/ui/create.lua", "/ui/create.lua"},
-    {"http://localhost/redos/update/files/ui/api/basalt/init.lua", "/ui/api/basalt/init.lua"},
-    {"http://localhost/redos/update/files/ui/api/dialog/dialog.lua", "/ui/api/dialog/dialog.lua"},
-    {"http://localhost/redos/update/files/ui/api/window/init.lua", "/ui/api/window/init.lua"},
+    {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/startup.lua", "/startup.lua"},
+    {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/desktop.lua", "/ui/desktop.lua"},
+    {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/login.lua", "/ui/login.lua"},
+    {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/updater.lua", "/ui/updater.lua"},
+    {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/create.lua", "/ui/create.lua"},
+    {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/basalt/init.lua", "/ui/api/basalt/init.lua"},
+    {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/dialog/dialog.lua", "/ui/api/dialog/dialog.lua"},
+    {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/window/init.lua", "/ui/api/window/init.lua"},
 }
 
 _G.update_msg = "not message."
