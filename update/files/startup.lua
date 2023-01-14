@@ -192,13 +192,13 @@ function os.reboot()
         if string.find(freadall, running) then
             rebootx()
         else
-            local choice = dialog.yesorno(1, 1, "Do you want to\nregister the\npower list?")
+            local choice = dialog.yesorno(screen_w/2-13, h/2-2, "Do you want to\nregister the\npower list?")
             if choice then
                 os.accept("shutdown")
             end
         end
     else
-        local choice = dialog.yesorno(1, 1, "Do you want to\nregister the\npower list?")
+        local choice = dialog.yesorno(screen_w/2-13, h/2-2, "Do you want to\nregister the\npower list?")
         if choice then
             os.accept("shutdown")
         end

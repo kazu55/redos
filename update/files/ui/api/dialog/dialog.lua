@@ -54,13 +54,13 @@ function yesorno(x,y,txt,title)
   term.setCursorPos(x,y)
   term.setBackgroundColor(colors.blue)
   term.setTextColor(colors.red)
-  term.write("               ")
+  term.write("                              ")
   term.setCursorPos(x,y)
   term.write(title)--title must be 15 or less chars long
   term.setCursorPos(x,y+1)
   term.setBackgroundColor(colors.white)
   term.setTextColor(colors.black)
-  term.write("               ")
+  term.write("                              ")
   term.setCursorPos(x,y+1)
   term.write(txt)--txt must be 15 or less chars long
   term.setCursorPos(x,y+2)
@@ -68,7 +68,7 @@ function yesorno(x,y,txt,title)
   term.setBackgroundColor(colors.green)
   term.write("Yes")
   term.setBackgroundColor(colors.white)
-  term.write("   ")
+  term.write("                  ")
   term.setBackgroundColor(colors.red)
   term.write("No")
   term.setBackgroundColor(colors.white)
@@ -77,7 +77,7 @@ function yesorno(x,y,txt,title)
   if button == 1 and xw > x+2 and xw < x+6 and ye == y+2 then
     cleardia(2,x,y)  
     return true
-  elseif button == 1 and xw > x+8 and xw < x+11 and ye == y+2 then
+  elseif button == 1 and xw > x+23 and xw < x+26 and ye == y+2 then
     cleardia(2,x,y)
     return false
   end    
