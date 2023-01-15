@@ -1,10 +1,12 @@
-_G.runningversion = 202312
+_G.runningversion = 202313
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 term.setPaletteColor(colors.red, 1, 0, 0)
 term.setPaletteColor(colors.blue, 0, 0, 1)
 term.setPaletteColor(colors.green, 0, 1, 0)
 term.setPaletteColor(colors.white, 1, 1, 1)
+term.setPaletteColor(colors.yellow, 1, 1, 0)
+term.setPaletteColor(colors.cyan, 0, 1, 1)
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
