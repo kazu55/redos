@@ -9,4 +9,4 @@ _G.update_downloadfiles = {
     {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/window/init.lua", "/ui/api/window/init.lua"},
 }
 
-_G.update_msg = "not message."
+_G.update_msg = "Please check github for updates."
