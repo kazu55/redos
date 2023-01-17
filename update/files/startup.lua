@@ -1,4 +1,4 @@
-_G.runningversion = 202314
+_G.runningversion = 202315
 _G.versiontype = "release"
 term.setPaletteColor(colors.black, 0, 0, 0)
 term.setPaletteColor(colors.red, 1, 0, 0)
@@ -136,12 +136,13 @@ function _G.error(msg, level)
     local level = level or 2
     local BGC = term.getBackgroundColor()
     local TC = term.getTextColor()
-    logwrite("E: " .. msg)
+    logwrite("error report")
     logwrite("=============================================")
     logwrite("Details:")
     logwrite("    Running:" .. shell.getRunningProgram())
     logwrite("    Level:  " .. level)
     logwrite("=============================================")
+    logwrite(msg)
     local w, h = term.getSize()
     term.setCursorPos(1, h/2-3)
     term.setBackgroundColor(colors.red)
@@ -153,10 +154,10 @@ function _G.error(msg, level)
     term.setCursorPos(1, h/2-2)
     term.setBackgroundColor(colors.white)
     term.setTextColor(colors.black)
-    write(msg)
+    write("Error occupted. Please check log.")
     term.setBackgroundColor(BGC)
     term.setTextColor(TC)
-    sleep(1.5)
+    sleep(2)
     backerror(msg, level)
 end
 
