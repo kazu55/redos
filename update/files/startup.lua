@@ -1,5 +1,5 @@
-_G.runningversion = 202316
-_G.versiontype = "release"
+_G.runningversion = 202317
+_G.versiontype = "non-stable"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
@@ -213,29 +213,6 @@ function _G.print(...)
         logwrite("Not print enabled.")
     else
         printx(...)
-    end
-end
-
-shellrunx = shell.run
-
-function shell.run(...)
-    local arg1 = ...
-    if fs.exists("/accepted.program") then
-        local file = fs.open("/accepted.program", "r")
-        local freadall = file.readAll()
-        file.close()
-        if string.find(freadall, arg1) then
-            shellrunx(...)
-        else
-            local choice = dialog.yesorno(1, 1, "do you execute third-party program?")
-            if choice then
-                os.accept("program")
-            end
-        end
-    else
-        local file = fs.open("/accepted.program", "a")
-        file.write("/startup.lua\n/ui/desktop.lua\n/ui/login.lua\n/ui/create.lua\n/ui/updater.lua")
-        file.close()
     end
 end
 
