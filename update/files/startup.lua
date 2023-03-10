@@ -1,10 +1,10 @@
-_G.runningversion = 202317
+_G.runningversion = 202318
 _G.versiontype = "non-stable"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
 function _G.os.version()
-    return "ysbos v" .. tostring(runningversion)
+    return "miniature v" .. tostring(runningversion)
 end
 
 
