@@ -139,7 +139,7 @@ local function listFiles(dir)
       drawFiles(dir, selected, page, ITEMS_PER_PAGE)
       dir, selected, page = handleInput(dir, selected, page, totalPages)
       totalPages = math.ceil(#listFiles(dir) / ITEMS_PER_PAGE)
-      sleep(0)
+      sleep(0.15)
     end
   end
   
