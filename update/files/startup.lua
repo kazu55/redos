@@ -1,5 +1,5 @@
-_G.runningversion = 202318
-_G.versiontype = "non-stable"
+_G.runningversion = 202319
+_G.versiontype = "unstable"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 

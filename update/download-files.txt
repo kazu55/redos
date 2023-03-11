@@ -7,6 +7,7 @@ _G.update_downloadfiles = {
     {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/basalt/init.lua", "/ui/api/basalt/init.lua"},
     {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/dialog/dialog.lua", "/ui/api/dialog/dialog.lua"},
     {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/window/init.lua", "/ui/api/window/init.lua"},
+    {"http://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/explorer.lua", "/ui/explorer.lua"},
 }
 
 _G.update_msg = "Please check github for updates."
