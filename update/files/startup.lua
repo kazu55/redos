@@ -3,10 +3,6 @@ _G.versiontype = "unstable"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
-function _G.os.version()
-    return "miniature v" .. tostring(runningversion)
-end
-
 
 backerror = error
 
@@ -26,7 +22,7 @@ _G.screen_w, _G.screen_h = term.getSize()
 
 logwrite("starting " .. os.version())
 
-logwrite("register function...")
+logwrite("Setting function...")
 
 term.clear()
 term.setCursorPos(1, 1)
@@ -214,12 +210,6 @@ function _G.print(...)
     else
         printx(...)
     end
-end
-
-if screen_w < 60 or screen_h < 25 then
-    printError("not supported screen.")
-    print("Screen width must be 60 or greater and Screen width must be 25 to activate.")
-    while true do sleep(0) end
 end
 
 logwrite("internet connecting")
