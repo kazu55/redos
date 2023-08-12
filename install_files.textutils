@@ -1,3 +1,11 @@
 {
-  ["/startup.lua"] = 
+  ["/startup.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/startup.lua",
+  ["/ui/desktop.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/desktop.lua",
+  ["/ui/login.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/login.lua",
+  ["/ui/updater.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/updater.lua",
+  ["/ui/create.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/create.lua",
+  ["/ui/api/basalt/init.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/basalt/init.lua",
+  ["/ui/api/dialog/dialog.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/dialog/dialog.lua",
+  ["/ui/api/window/init.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/window/init.lua",
+  ["/ui/explorer.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/explorer.lua"
 }
