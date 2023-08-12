@@ -5,7 +5,7 @@
 -- Various functions with minor indentation modification
 -- http://www.computercraft.info/forums2/index.php?/topic/460-how-to-center-text/page__view__findpost__p__29484
 -- これはClassCoderさんが作ったものになります。
--- 著作権はClassCoderさんにあります。
+
 local function centerText(text)
   local x,y = term.getSize()
   local x2,y2 = term.getCursorPos()
