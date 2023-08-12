@@ -67,8 +67,8 @@ local sizex, sizey = term.getSize()
 term.setCursorPos(1, sizey)
 centerText("Loading...")
 term.setCursorPos(1, 1)
-sleep(3)
-
+-- sleep(3) 不要なsleep
+local install_to = "/"
 clearTermWName(colors.white, colors.cyan)
 print("You will first need to accept the license at")
 print(license_url)
