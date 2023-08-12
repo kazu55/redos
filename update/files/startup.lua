@@ -1,5 +1,5 @@
-_G.runningversion = 202322
-_G.versiontype = "unstable"
+_G.runningversion = 202323
+_G.versiontype = "none"
 
 os.loadAPI("/ui/api/dialog/dialog.lua")
 
@@ -37,15 +37,15 @@ end
 
 function _G.textutils.animate_1()
     local frames = {
-        {i = false, c = " \7      "},
-        {i = false, c = " \7      "},
-        {i = false, c = " \7      "},
-        {i = false, c = "\7 \7   "},
-        {i = false, c = "\7 \7   "},
-        {i = false, c = "\7 \7   "},
-        {i = false, c = "\7 \7 \7"},
-        {i = false, c = "\7 \7 \7"},
-        {i = false, c = "\7 \7 \7"},
+        {i = false, c = ".    "},
+        {i = false, c = ".    "},
+        {i = false, c = ".    "},
+        {i = false, c = ". .  "},
+        {i = false, c = ". .  "},
+        {i = false, c = ". .  "},
+        {i = false, c = ". . ."},
+        {i = false, c = ". . ."},
+        {i = false, c = ". . ."},
     }
   
     local function drawFrame(frame)
@@ -151,7 +151,7 @@ end
 local shutdownx = os.shutdown
 local rebootx = os.reboot
 
-function os.reboot()
+function os.shutdown()
     local running = shell.getRunningProgram()
     if fs.exists("/accepted.shutdown") then
         local file = fs.open("/accepted.shutdown", "r")
@@ -163,12 +163,14 @@ function os.reboot()
             local choice = dialog.yesorno(1, 1, "Do you want to\nregister the\npower list?")
             if choice then
                 os.accept("shutdown")
+                shutdownx()
             end
         end
     else
         local choice = dialog.yesorno(1, 1, "Do you want to\nregister the\npower list?")
         if choice then
             os.accept("shutdown")
+            shutdownx()
         end
     end
 end
@@ -188,15 +190,17 @@ function os.reboot()
         if string.find(freadall, running) then
             rebootx()
         else
-            local choice = dialog.yesorno(screen_w/2-13, h/2-2, "Do you want to\nregister the\npower list?")
+            local choice = dialog.yesorno(screen_w/2-13, screen_h/2-2, "Do you want to\nregister the\npower list?")
             if choice then
                 os.accept("shutdown")
+                rebootx()
             end
         end
     else
-        local choice = dialog.yesorno(screen_w/2-13, h/2-2, "Do you want to\nregister the\npower list?")
+        local choice = dialog.yesorno(screen_w/2-13, screen_h/2-2, "Do you want to\nregister the\npower list?")
         if choice then
             os.accept("shutdown")
+            rebootx()
         end
     end
 end
@@ -216,30 +220,34 @@ logwrite("internet connecting")
 
 
 local function main()
+    if fs.exists("/update/run.lua") then
+        loading_text("Starting Update. Please wait.")
+        fs.delete("/startup.lua")
+        shell.run("rm /ui")
+        shell.run("rm /logs")
+        loading_text("Updating. Please wait.")
+        shell.run("/update/run.lua")
+        fs.delete("/update/run.lua")
+        loading_text("Restarting")
+        os.accept("shutdown")
+        os.reboot()
+    end
     local function text()
         loading_text("Internet connecting...")
     end
     local function connect()
-        ok = http.get("http://localhost/redos")
+        ok = http.get("http://example.com")
         if not ok then
             logwrite("internet not connected")
             loading_text("Internet not connected")
         else
-            _G.notprint = true
-            logwrite("internet connected")
-            loading_text("Internet connected.")
-            loading_text("Checking update")
-            shell.run("wget run http://localhost/redos/update/version.txt")
-            if runningversion < newver then
-                logwrite("Getting update-files list")
-                loading_text("Getting update-files list")
-                shell.run("wget run http://localhost/redos/update/download-files.txt")
-            end
-            _G.notprint = false
+            loading_text("Internet connected")
         end
     end
     parallel.waitForAny(text, connect)
 end
+
+
 
 term.clear()
 term.setCursorPos(1, 1)
