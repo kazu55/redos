@@ -220,18 +220,6 @@ logwrite("internet connecting")
 
 
 local function main()
-    if fs.exists("/update/run.lua") then
-        loading_text("Starting Update. Please wait.")
-        fs.delete("/startup.lua")
-        shell.run("rm /ui")
-        shell.run("rm /logs")
-        loading_text("Updating. Please wait.")
-        shell.run("/update/run.lua")
-        fs.delete("/update/run.lua")
-        loading_text("Restarting")
-        os.accept("shutdown")
-        os.reboot()
-    end
     local function text()
         loading_text("Internet connecting...")
     end
@@ -248,6 +236,18 @@ local function main()
 end
 
 
+if fs.exists("/update/run.lua") then
+    loading_text("Starting Update. Please wait.")
+    fs.delete("/startup.lua")
+    shell.run("rm /ui")
+    shell.run("rm /logs")
+    loading_text("Updating. Please wait.")
+    shell.run("/update/run.lua")
+    fs.delete("/update/run.lua")
+    loading_text("Restarting")
+    os.accept("shutdown")
+    os.reboot()
+end
 
 term.clear()
 term.setCursorPos(1, 1)
