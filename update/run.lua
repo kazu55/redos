@@ -20,8 +20,8 @@ local function centerTextXY(text)
 end
 -- OS Config
 os_name = "Redsystem"
-os_version_major = 2023
-os_version_minor = 23
+os_version_major = 0
+os_version_minor = 0
 os_version_revision = 0
 os_version_abr = "none"
 license_url = ""
@@ -70,8 +70,6 @@ term.setCursorPos(1, 1)
 sleep(3)
 
 clearTermWName(colors.white, colors.cyan)
-print("Hello, user!")
-print("Welcome to the "..os_name.." version "..os_version_major.."."..os_version_minor.."."..os_version_revision.." "..os_version_abr.." installer.")
 print("You will first need to accept the license at")
 print(license_url)
 print("before installation.")
@@ -80,6 +78,7 @@ centerText("Press enter to select")
 term.setCursorPos(1, sizey)
 colorTerm(colors.white, colors.green)
 centerText("   Accept   ")
+waitForScanCode(28)
 clearTermWName(colors.white, colors.green)
 centerTextXY("Downloading file list from GitHub")
 local install_files = textutils.unserialize(http.get("https://raw.githubusercontent.com/"..github_repo.."/install_files.textutils").readAll())
