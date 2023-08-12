@@ -19,13 +19,13 @@ local function centerTextXY(text)
   io.write(text)
 end
 -- OS Config
-os_name = "CWCOS"
-os_version_major = 0
-os_version_minor = 1
+os_name = "Redsystem"
+os_version_major = 2023
+os_version_minor = 23
 os_version_revision = 0
-os_version_abr = "alpha"
-license_url = "http://opensource.org/licenses/BSD-3-Clause"
-github_repo = "CodingWithClass/CWCOS/master"
+os_version_abr = "none"
+license_url = ""
+github_repo = "kazu55/redos/main"
 -- Terminal clearers
 function clearTermWName(fg, bg)
   colorTerm(fg, bg)
