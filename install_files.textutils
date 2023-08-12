@@ -7,5 +7,5 @@
   ["/ui/api/basalt/init.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/basalt/init.lua",
   ["/ui/api/dialog/dialog.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/dialog/dialog.lua",
   ["/ui/api/window/init.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/api/window/init.lua",
-  ["/ui/explorer.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/explorer.lua"
+  ["/ui/explorer.lua"] = "https://raw.githubusercontent.com/kazu55/redos/main/update/files/ui/explorer.lua",
 }
