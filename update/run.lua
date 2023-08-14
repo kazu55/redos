@@ -70,6 +70,7 @@ term.setCursorPos(1, 1)
 -- sleep(3) 不要なsleep
 local install_to = "/"
 clearTermWName(colors.white, colors.cyan)
+print("Install Path: "..install_to)
 print("You will first need to accept the license at")
 print(license_url)
 print("before installation.")
